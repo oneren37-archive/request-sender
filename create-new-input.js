@@ -1,4 +1,10 @@
-import {HEADER_INPUT, OPTION_INPUT} from "./consts.js";
+import {
+    HEADER_INPUT,
+    HEADER_KEY_SELECTOR,
+    HEADER_VALUE_SELECTOR,
+    OPTION_INPUT, OPTIONS_KEY_SELECTOR,
+    OPTIONS_VALUE_SELECTOR
+} from "./consts.js";
 
 export function createNewInput(rootNode, inputType){
     let keyInputClass
@@ -6,13 +12,13 @@ export function createNewInput(rootNode, inputType){
 
     switch (inputType){
         case HEADER_INPUT:
-            keyInputClass = "header-key"
-            valueInputClass = "header-value"
+            keyInputClass = HEADER_KEY_SELECTOR
+            valueInputClass = HEADER_VALUE_SELECTOR
             break
 
         case OPTION_INPUT:
-            keyInputClass = "option-key"
-            valueInputClass = "option-value"
+            keyInputClass = OPTIONS_KEY_SELECTOR
+            valueInputClass = OPTIONS_VALUE_SELECTOR
             break
     }
 

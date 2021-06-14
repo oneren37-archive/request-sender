@@ -1,14 +1,22 @@
 import {createNewInput} from "./create-new-input.js";
-import {HEADER_INPUT, OPTION_INPUT} from "./consts.js";
+import {
+    ADD_HEADER_INPUT_SELECTOR,
+    ADD_OPTION_INPUT_SELECTOR,
+    HEADER_INPUT,
+    HEADER_INPUT_AREA_SELECTOR,
+    OPTION_INPUT, OPTION_INPUT_AREA_SELECTOR,
+} from "./consts.js";
 import {sendRequest} from "./send-request.js";
+import {getFormData} from "./get-form-data.js";
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    const addHeaderInput = document.querySelector('#js-add-header-input')
-    const addOptionInput = document.querySelector('#js-add-option-input')
-    const headerInputArea = document.querySelector('#js-header-input-area')
-    const optionInputArea = document.querySelector('#js-option-input-area')
+    const addHeaderInput = document.querySelector(ADD_HEADER_INPUT_SELECTOR)
+    const addOptionInput = document.querySelector(ADD_OPTION_INPUT_SELECTOR)
+    const headerInputArea = document.querySelector(HEADER_INPUT_AREA_SELECTOR)
+    const optionInputArea = document.querySelector(OPTION_INPUT_AREA_SELECTOR)
     const form = document.querySelector('form')
+    const responseField = document.querySelector("code")
 
     addHeaderInput.addEventListener('click', (e) => {
         createNewInput(headerInputArea, HEADER_INPUT)
@@ -19,33 +27,13 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     form.addEventListener('submit', () => {
-        const requestTypeHTMLElement = document.querySelector("#js-request-type")
-        const headerKeys = Array.from(document.querySelectorAll('.header-key')).map(e => e = e.value)
-        const headerValues = Array.from(document.querySelectorAll('.header-value')).map(e => e = e.value)
-        const optionKeys = Array.from(document.querySelectorAll('.option-key')).map(e => e = e.value)
-        const optionValues = Array.from(document.querySelectorAll('.option-value')).map(e => e = e.value)
-        const responseField = document.querySelector("code")
 
-        const data = {}
-        data.headers = {}
-        data.options = {}
-
-        data.requestURL = document.querySelector("#js-request-url").value
-        data.requestType = requestTypeHTMLElement.options[requestTypeHTMLElement.selectedIndex].value
-
-        headerKeys.forEach((key, index) => { key ? data.headers[key] = headerValues[index] : console.log("Noup")})
-        optionKeys.forEach((key, index) => { key ? data.options[key] = optionValues[index] : console.log("Noup")})
-
-        console.log(data)
-
-        function displayResponse(r) {
-            responseField.innerHTML = r
-        }
+        let data = getFormData()
 
         sendRequest(
             data.requestURL,
             data.requestType,
             data.headers,
-            data.options).then(r => displayResponse(r))
+            data.options).then(r => responseField.innerHTML = r)
     })
 })
