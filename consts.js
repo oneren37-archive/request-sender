@@ -1,0 +1,2 @@
+export const HEADER_INPUT = "HEADER_INPUT"
+export const OPTION_INPUT = "OPTION_INPUT"

@@ -16,51 +16,46 @@
     <div class="row">
         <form action="" class="col-6">
             <h1 class="mt-5" >Request Sender</h1>
+
+            <h4 class="mt-4">Request URL</h4>
+            <input  class="form-control col-11 m-2" id="js-request-url" type="text">
+
             <h4 class="mt-4">Select request type</h4>
-            <select class="form-control form-control-lg col-sm-4">
+            <select class="form-control form-control-lg col-5" id="js-request-type">
                 <option>GET</option>
                 <option>POST</option>
             </select>
 
             <h4 class="mt-4">Headers</h4>
-            <div class="container">
+            <div class="container" id="js-header-input-area">
                 <div class="row">
-                    <input  class="form-control col-sm-4 m-2" type="text">
-                    <input  class="form-control col-sm-4 m-2" type="text">
+                    <input  class="form-control col-5 m-2 header-key" type="text">
+                    <input  class="form-control col-5 m-2 header-value" type="text">
                 </div>
                 <div class="row">
-                    <input class="form-control col-sm-4 m-2" type="text">
-                    <input class="form-control col-sm-4 m-2" type="text">
-                </div>
-                <div class="row">
-                    <button type="button" class="btn btn-primary">Add header</button>
+                    <input  class="form-control col-5 m-2 header-key" type="text">
+                    <input  class="form-control col-5 m-2 header-value" type="text">
                 </div>
             </div>
+            <button type="button" class="btn btn-primary" id="js-add-header-input">Add header</button>
+
+
             <h4 class="mt-4">Options</h4>
-            <div class="container">
+            <div class="container" id="js-option-input-area">
                 <div class="row">
-                    <input class="form-control col-sm-4 m-2" type="text">
-                    <input class="form-control col-sm-4 m-2" type="text">
+                    <input class="form-control col-5 m-2 option-key" type="text">
+                    <input class="form-control col-5 m-2 option-value" type="text">
                 </div>
                 <div class="row">
-                    <input class="form-control col-sm-4 m-2" type="text">
-                    <input class="form-control col-sm-4 m-2" type="text">
-                </div>
-                <div class="row">
-                    <button type="button" class="btn btn-primary">Add option</button>
+                    <input class="form-control col-5 m-2 option-key" type="text">
+                    <input class="form-control col-5 m-2 option-value" type="text">
                 </div>
             </div>
-            <button type="button" class="btn btn-success col-sm-3 mt-4">Submit</button>
+            <button type="button" class="btn btn-primary" id="js-add-option-input">Add option</button>
+            <input type="submit" class="btn btn-success col-11 mt-4" value="Submit"/>
         </form>
 
-        <pre class="col-6 mt-5"><code>
-{
-    "data': {
-        "id": 1,
-        "hello": "world"
-    }
-}
-        </code></pre>
+        <pre class="col-6 mt-5"><code></code></pre>
     </div>
 </main>
 
@@ -68,5 +63,6 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="./main.js" type="module"></script>
 </body>
 </html>
