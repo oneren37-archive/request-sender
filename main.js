@@ -9,7 +9,7 @@ import {
 import {sendRequest} from "./send-request.js";
 import {getFormData} from "./get-form-data.js";
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', (text, reviver) => {
 
     const addHeaderInput = document.querySelector(ADD_HEADER_INPUT_SELECTOR)
     const addOptionInput = document.querySelector(ADD_OPTION_INPUT_SELECTOR)
@@ -26,14 +26,17 @@ document.addEventListener('DOMContentLoaded', () => {
         createNewInput(optionInputArea, OPTION_INPUT)
     })
 
-    form.addEventListener('submit', () => {
-
+    form.addEventListener('submit', (e) => {
+        e.preventDefault()
         let data = getFormData()
 
         sendRequest(
             data.requestURL,
             data.requestType,
             data.headers,
-            data.options).then(r => responseField.innerHTML = r)
+            data.options).then(r => {
+                console.log(r)
+                responseField.innerHTML = JSON.stringify(JSON.parse(r), null, ' ')
+            })
     })
 })

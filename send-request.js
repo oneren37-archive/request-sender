@@ -4,4 +4,5 @@ export function sendRequest(url, method, headers=null, body=null){
         body: method!=="GET" ? JSON.stringify(body) : null,
         headers: headers
     }).then(response => response.text())
+        .catch(err => err.message)
 }
